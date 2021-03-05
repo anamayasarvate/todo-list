@@ -1,0 +1,41 @@
+<h1>My To-Do list</h1>
+{% if messages %}
+	{% for message in messages %}
+		<h2>{{message}}</h2>
+	{% endfor %}
+
+{% endif %}
+
+<a href="{%url 'todo-create'%}" style = "text-decoration:none">
+<button>Create a task</button>
+</a>
+
+{% if user.is_authenticated %}
+
+<a href="{%url 'logout'%}" style = "text-decoration:none">
+<button>Logout</button>
+</a>
+
+
+{% else %}
+
+<a href="{%url 'login'%}" style = "text-decoration:none">
+<button>Login</button>
+</a>
+
+<a href="{%url 'register'%}" style = "text-decoration:none">
+<button>Register</button>
+</a>
+
+{% endif %}
+
+{% for object in object_list %}
+
+<div>
+<a href="{% url 'todo-detail' object.id %}" style = "text-decoration:none">
+<h3 style = "font-weight: 10; text-decoration: none; color:#000;">{{object.content}}</h3>
+</a>	
+</div>
+
+{% endfor %}
+

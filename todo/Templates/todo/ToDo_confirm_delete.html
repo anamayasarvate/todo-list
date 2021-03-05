@@ -1,0 +1,6 @@
+<form method = "POST">
+	{% csrf_token %}
+	<h1>Are you sure you want to delete the task: "{{ object.content }}"</h1>
+	{{form}}
+	<button type = "submit">Delete</button>
+</form>
